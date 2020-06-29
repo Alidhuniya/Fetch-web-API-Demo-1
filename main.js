@@ -1,3 +1,6 @@
+
+/*
+// fetch api is re[placement of xmlhttp request
 // poem - 1
 
 const loadPoems1 = () => {
@@ -77,9 +80,64 @@ const loadPoems3 = () => {
 
 const btn3 = document.getElementById("btn3").addEventListener("click", loadPoems3);
 
+*/
+
+
+// poem - 1
+
+const loadPoems1 = () => {
+    const url = "./poem1.txt";
+
+    refactor ("GET", url)
+   
+}
+
+
+
+const btn1 = document.getElementById("btn1").addEventListener("click", loadPoems1);
+
+
+// poem - 2
+
+const loadPoems2 = () => {
+    const url = "./poem2.txt";
+    refactor ("GET", url)
+}
+
+
+
+const btn2 = document.getElementById("btn2").addEventListener("click", loadPoems2);
+
+// poem - 3
+
+const loadPoems3 = () => {
+    const url = "./poem3.txt";
+
+    refactor ("GET", url)
+}
+
+
+
+const btn3 = document.getElementById("btn3").addEventListener("click", loadPoems3);
 
 // Refactoring above fetch API because of duplication
 
+const refactor = (method, path) => {
+    return fetch(path)
+    .then ((res) => {
+        return res.text();
+    })
+    .then((result) => {
+        let output1 = `
+        <p><pre class="pre"> ${result} </pre> </p>
+        `
+        document.getElementById("poem").innerHTML = output1;
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+
+}
 
 
 /*
